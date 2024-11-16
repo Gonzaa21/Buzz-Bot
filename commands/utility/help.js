@@ -19,7 +19,7 @@ module.exports = {
             )
             .setFooter({
                 text: 'Information about how to use Buzz Bot in Discord.',
-                iconURL: 'https://ibb.co/cJSs6sT'
+                iconURL: 'https://i.ibb.co/SN4ZtZv/buzz.png'
             })
 
         // PANEL BUTTONS
