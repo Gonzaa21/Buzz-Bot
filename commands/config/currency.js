@@ -1,24 +1,25 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const axios = require('axios');
+const config = require('/Users/Usuario/Downloads/Buzz/config.json')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('crypto')
-		.setDescription('Create a settings panel of crypto'),
+		.setName('currency')
+		.setDescription('Create a settings panel of currency'),
 	async execute(interaction) {
 
 		try {
 			const updateEmbeds = async () => {
 				// API
-				const coinGecko = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false');
-				const coinGeckoData = coinGecko.data;
+				const exchangeRate = await axios.get(`https://v6.exchangerate-api.com/v6/${config.EXCHANGERATE_API_KEY}/latest/usd`);
+				const rates = Object.entries(exchangeRate.data.conversion_rates);
 
 				// Embed
 				const header = new EmbedBuilder()
 					.setColor('#2b2d31')
-					.setTitle('`🌐`  Cryptocurrencies Table  `📈`')
-					.setDescription('Top live crypto prices on the market using USD as a base currency.')
-					.setFooter({ text: 'Buzz Bot ▴ Data from CoinGecko' })
+					.setTitle('`💵`  Currencies Table  `💰`')
+					.setDescription('Top live currency prices on the market using USD as a base currency.')
+					.setFooter({ text: 'Buzz Bot ▴ Data from Exchange Rate' })
 					.setTimestamp(new Date());
 
 				const embeds = [header];
@@ -26,15 +27,14 @@ module.exports = {
 				const maxEmbeds = 4; // Max number embeds
 
 				// Loop
-				for (let i = 0; i < Math.min(maxEmbeds, Math.ceil(coinGeckoData.length / maxFieldsPerEmbed)); i++) {
+				for (let i = 0; i < Math.min(maxEmbeds, Math.ceil(rates.length / maxFieldsPerEmbed)); i++) {
 					
 					// Embeds
 					const body = new EmbedBuilder().setColor('#2b2d31');
 					
 					// Fields
-					coinGeckoData.slice(i * maxFieldsPerEmbed, (i + 1) * maxFieldsPerEmbed).forEach(coin => {
-						const price = coin.current_price % 1 === 0 ? coin.current_price : coin.current_price;
-						body.addFields({ name: `🪙 ${coin.symbol.toUpperCase()}     \n`, value: `🏷️ $ ${price}     \n`, inline: true });
+					rates.slice(i * maxFieldsPerEmbed, (i + 1) * maxFieldsPerEmbed).forEach(([currency, rate]) => {
+						body.addFields({ name: `🪙 ${currency.toUpperCase()}`, value: `💵 $ ${rate}`, inline: true });
 					});
 
 					embeds.push(body); // Add embed to list
