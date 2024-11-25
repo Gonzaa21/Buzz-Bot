@@ -1,6 +1,6 @@
 # TAREAS
 - _bot online_
-- comandos
+- market, materia, global, invite
 - _github_
 - readme
 
