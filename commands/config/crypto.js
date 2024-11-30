@@ -16,7 +16,7 @@ module.exports = {
 				// Embed
 				const header = new EmbedBuilder()
 					.setColor('#2b2d31')
-					.setTitle('`🌐`  Cryptocurrencies Table  `📈`')
+					.setAuthor({name:'Buzz Bot Cryptocurrencies Table', iconURL:'https://emoji.discadia.com/emojis/6c9d566f-9b69-469c-ae6d-6101c4ef2710.gif'})
 					.setDescription('Top live crypto prices on the market using USD as a base currency.')
 					.setFooter({ text: 'Buzz Bot ▴ Data from CoinGecko' })
 					.setTimestamp(new Date());

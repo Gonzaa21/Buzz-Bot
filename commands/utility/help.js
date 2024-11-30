@@ -13,7 +13,7 @@ module.exports = {
             .addFields(
                 {
                     name: 'COMMANDS',
-                    value: "**├─** Buzz Commands `⚙️`\n\n</help:1281360591566671872> - `Commands and information`\n</ping:1280638409962160278> - `Latency of Buzz`\n</invite:> - `Invite bot link`\n\n**├─** Buzz Configuration `🛒`\n\n</crypto:1304153208805134468> - `Cryptocurrency alert settings panel`\n</currency:1307754132844581066> - `Currency alert settings panel`\n</market:1310129489778577478> - `Company alert settings panel`\n</raw-mat:> - `Raw Material alert settings panel`\n\n**└─** Buzz Global Configuration `📰`\n\n</news:> - `Latest global news`\n</trends:> - `Latest relevant trend movements`"
+                    value: "**├─** Buzz Commands `⚙️`\n\n</help:1281360591566671872> - `Commands and information`\n</ping:1280638409962160278> - `Latency of Buzz`\n</invite:> - `Invite bot link`\n\n**├─** Buzz Configuration `🛒`\n\n</crypto:1304153208805134468> - `Cryptocurrency alert settings panel`\n</currency:1307754132844581066> - `Currency alert settings panel`\n</market:1310129489778577478> - `Company alert settings panel`\n\n**└─** Buzz Global Configuration `📰`\n\n</news:> - `Latest global news`\n</trends:> - `Latest relevant trend movements`"
                 }
             )
             .setFooter({
