@@ -1,0 +1,49 @@
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const axios = require('axios');
+const config = require('/Users/Usuario/Downloads/Buzz/config.json')
+
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('news')
+		.setDescription('Latest global news')
+		.addStringOption(option =>
+			option
+				.setName('keyword')
+				.setDescription('a keyword to search the latest news')
+				.setRequired(true)),
+	async execute(interaction) {
+
+		try {
+			const keyword = interaction.options.getString('keyword');
+			// API
+			const newsapi = await axios.get(`https://newsapi.org/v2/everything?q=${keyword}&apiKey=${config.NEWS_API_KEY}`);
+			const articles = newsapi.data.articles;
+
+			if (!articles || articles.length === 0) {
+				await interaction.reply('No news found for the keyword.');
+				return;
+			}
+
+			const article = articles[0];
+
+			// Embed
+			const news = new EmbedBuilder()
+				.setColor('#2b2d31')
+				.setAuthor({
+					name: `${article.title}`,
+					url: `${article.url || undefined}`,
+					iconURL: 'https://cdn.discordapp.com/attachments/867345989216108564/1312636995566309456/emoji.png?ex=674d37f7&is=674be677&hm=0a6458dd72d6d0693817f0199b2dbb0ec50a22e5a13d38607089f0642954e8c0&'
+				})
+				.setDescription(`${article.description || article.content}`)
+				.setImage(`${article.urlToImage}`)
+				.setFooter({
+					text: `${article.source.name}  •  ${article.publishedAt}`
+				})
+	
+			await interaction.reply({ embeds:[news] });
+
+		} catch (err) {
+			console.log(err)
+		}
+	},
+};

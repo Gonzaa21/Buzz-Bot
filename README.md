@@ -1,6 +1,6 @@
 # TAREAS
 - _bot online_
-- materia, global, invite
+- news, 
 - _github_
 - readme
 
