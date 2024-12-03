@@ -12,8 +12,8 @@ module.exports = {
             .setDescription('Buzz is your personal assistant for staying up to date with the financial market. Stay informed and never miss an opportunity with Buzz!')
             .addFields(
                 {
-                    name: 'COMMANDS',
-                    value: "**├─** Buzz Commands `⚙️`\n\n</help:1281360591566671872> - `Commands and information`\n</ping:1280638409962160278> - `Latency of Buzz`\n</invite:> - `Invite bot link`\n\n**├─** Buzz Configuration `🛒`\n\n</crypto:1304153208805134468> - `Cryptocurrency alert settings panel`\n</currency:1307754132844581066> - `Currency alert settings panel`\n</market:1310129489778577478> - `Company alert settings panel`\n\n**└─** Buzz Global Configuration `📰`\n\n</news:> - `Latest global news`\n</trends:> - `Latest relevant trend movements`"
+                    name: 'ㅤ',
+                    value: "**├─** **Buzz Commands** `⚙️`\n\n</help:1281360591566671872> - `Commands and information`\n</ping:1280638409962160278> - `Latency of Buzz`\n</invite:1312504161690194062> - `Invite bot link`\n\n**├─** **Buzz Configuration** `🛒`\n\n</crypto:1304153208805134468> - `Cryptocurrency alert settings panel`\n</currency:1307754132844581066> - `Currency alert settings panel`\n</market:1310129489778577478> - `Company alert settings panel`\n\n**└─** **Buzz Global Configuration** `📰`\n\n</news:1312630638825705562> - `Latest global news`\n</top:> - `Top gainers and losers tickers`"
                 }
             )
             .setFooter({
@@ -26,12 +26,13 @@ module.exports = {
         const buttonInvite = new ButtonBuilder()
             .setLabel('Invite Buzz')
             .setStyle(ButtonStyle.Link)
-            .setURL('https://discord.js.org/');
+            .setURL('https://discord.com/oauth2/authorize?client_id=1279431370531405855');
         
         const buttonWeb = new ButtonBuilder()
-            .setLabel('Web Help Center')
+            .setLabel('Support')
             .setStyle(ButtonStyle.Link)
-            .setURL('https://discord.js.org/');
+            .setURL('https://discord.js.org/')
+            .setDisabled(true);
 
         // Add custom buttons to row
         const row = new ActionRowBuilder()

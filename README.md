@@ -1,6 +1,7 @@
 # TAREAS
 - _bot online_
-- news, 
+- trending
+- bot 24/7
 - _github_
 - readme
 

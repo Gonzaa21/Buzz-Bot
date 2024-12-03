@@ -34,7 +34,7 @@ module.exports = {
 					// Fields
 					coinGeckoData.slice(i * maxFieldsPerEmbed, (i + 1) * maxFieldsPerEmbed).forEach(coin => {
 						const price = coin.current_price % 1 === 0 ? coin.current_price : coin.current_price;
-						body.addFields({ name: `🪙 ${coin.symbol.toUpperCase()}     \n`, value: `🏷️ $ ${price}     \n`, inline: true });
+						body.addFields({ name: `🪙 ${coin.symbol.toUpperCase()}`, value: `🏷️ $ ${price}ㅤㅤㅤ`, inline: true });
 					});
 
 					embeds.push(body); // Add embed to list

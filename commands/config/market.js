@@ -47,13 +47,13 @@ module.exports = {
 						iconURL: 'https://cdn.discordapp.com/attachments/867345989216108564/1310087947940528198/emoji.png?ex=67449abb&is=6743493b&hm=216ed90a1dc00ab4187e121f0ac0f06f1aa6579ad1a2a28de4b5b3630cbe6c74&'})
 					.setThumbnail(companyLogo)
 					.addFields(
-						{name: 'Price', value: `$${price}`, inline: true},
-						{name: 'Open', value: `$${open}`, inline: true},
-						{name: 'Close', value: `$${previousClose}`, inline: true},
-						{name: 'High', value: `$${high}`, inline: true},
-						{name: 'Low', value: `$${low}`, inline: true},
-						{name: 'Change Percent', value: `${changePercent}`, inline: true},
-						{name: '-', value: `> -# Latest trading day: ${latestTradingDay}`, inline: false}
+						{name: 'Price', value: `$${price}ㅤ`, inline: true},
+						{name: 'Open', value: `$${open}ㅤ`, inline: true},
+						{name: 'Close', value: `$${previousClose}ㅤ`, inline: true},
+						{name: 'High', value: `$${high}ㅤ`, inline: true},
+						{name: 'Low', value: `$${low}ㅤ`, inline: true},
+						{name: 'Change Percent', value: `${changePercent}ㅤ`, inline: true},
+						{name: 'ㅤ', value: `> -# Latest trading day: ${latestTradingDay}`, inline: false}
 					)
 					.setFooter({ text: 'Buzz Bot ▴ Data from Alpha Vantage'})
 					.setTimestamp(new Date())

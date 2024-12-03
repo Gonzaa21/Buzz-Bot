@@ -2,6 +2,8 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const axios = require('axios');
 const config = require('/Users/Usuario/Downloads/Buzz/config.json')
 
+let articleIndex = 0;
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('news')
@@ -24,7 +26,7 @@ module.exports = {
 				return;
 			}
 
-			const article = articles[0];
+			const article = articles[articleIndex];
 
 			// Embed
 			const news = new EmbedBuilder()
@@ -37,13 +39,17 @@ module.exports = {
 				.setDescription(`${article.description || article.content}`)
 				.setImage(`${article.urlToImage}`)
 				.setFooter({
-					text: `${article.source.name}  •  ${article.publishedAt}`
+					text: `${article.source.name}`
 				})
+				.setTimestamp(new Date(article.publishedAt))
 	
 			await interaction.reply({ embeds:[news] });
 
+			articleIndex = (articleIndex + 1) % articles.length;
+
 		} catch (err) {
-			console.log(err)
+			console.error(err);
+			await interaction.followUp('There was an error obtaining data from the APIs.');
 		}
 	},
 };
