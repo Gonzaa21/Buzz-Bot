@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const axios = require('axios');
-const config = require('/Users/Usuario/Downloads/Buzz/config.json')
+require('dotenv').config();
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -17,7 +17,8 @@ module.exports = {
 
 		try {
 				// API
-				const alphavantage = await axios.get(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${config.ALPHAVANTAGE_API_KEY}`); 
+				const apiKey1 = process.env.ALPHAVANTAGE_API_KEY;
+				const alphavantage = await axios.get(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${apiKey1}`); 
 				const globalQuote = alphavantage.data['Global Quote'];
 				
 				// In case when dont find the ticker
@@ -27,7 +28,8 @@ module.exports = {
 				}
 
 				// Company logo
-				const logoData = await axios.get(`https://finnhub.io/api/v1/stock/profile2?symbol=${ticker}&token=${config.FINNHUB_API_KEY}`);
+				const apiKey2 = process.env.FINNHUB_API_KEY;
+				const logoData = await axios.get(`https://finnhub.io/api/v1/stock/profile2?symbol=${ticker}&token=${apiKey2}`);
 				const companyLogo = logoData.data.logo || 'https://via.placeholder.com/150';
 
 				// Extract relevant info

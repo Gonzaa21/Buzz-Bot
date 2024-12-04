@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const axios = require('axios');
-const config = require('/Users/Usuario/Downloads/Buzz/config.json');
+require('dotenv').config();
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -11,9 +11,8 @@ module.exports = {
             await interaction.deferReply();
 
             // API request
-            const alphavantage = await axios.get(
-                `https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=${config.ALPHAVANTAGE_API_KEY}`
-            );
+            const apiKey = process.env.ALPHAVANTAGE_API_KEY;
+            const alphavantage = await axios.get(`https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=${apiKey}`);
 
             const top = alphavantage.data['top_gainers'];
             const losers = alphavantage.data['top_losers'];

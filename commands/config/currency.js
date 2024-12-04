@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const axios = require('axios');
-const config = require('/Users/Usuario/Downloads/Buzz/config.json')
+require('dotenv').config();
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -11,7 +11,8 @@ module.exports = {
 		try {
 			const updateEmbeds = async () => {
 				// API
-				const exchangeRate = await axios.get(`https://v6.exchangerate-api.com/v6/${config.EXCHANGERATE_API_KEY}/latest/usd`);
+				const apiKey = process.env.EXCHANGERATE_API_KEY;
+				const exchangeRate = await axios.get(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/usd`);
 				const rates = Object.entries(exchangeRate.data.conversion_rates);
 
 				// Embed

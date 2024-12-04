@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const axios = require('axios');
-const config = require('/Users/Usuario/Downloads/Buzz/config.json')
+require('dotenv').config();
 
 let articleIndex = 0;
 
@@ -18,7 +18,8 @@ module.exports = {
 		try {
 			const keyword = interaction.options.getString('keyword');
 			// API
-			const newsapi = await axios.get(`https://newsapi.org/v2/everything?q=${keyword}&apiKey=${config.NEWS_API_KEY}`);
+			const apiKey = process.env.NEWS_API_KEY;
+			const newsapi = await axios.get(`https://newsapi.org/v2/everything?q=${keyword}&apiKey=${apiKey}`);
 			const articles = newsapi.data.articles;
 
 			if (!articles || articles.length === 0) {
