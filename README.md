@@ -13,6 +13,9 @@ Buzz is a Discord bot tailored for finance and crypto enthusiasts. It delivers r
 # Invite
 https://discord.com/oauth2/authorize?client_id=1279431370531405855
 
+# Example
+![image](https://github.com/user-attachments/assets/4d2883c4-e2b7-485e-8d27-4592648b546c)
+
 # Other mentions
 This project is licensed under the MIT License. See the LICENSE file for more details.
 My Github Profile - [@Gonzaa21](https://github.com/Gonzaa21)
